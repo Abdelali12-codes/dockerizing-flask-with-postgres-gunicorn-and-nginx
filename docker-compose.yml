@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   web:
+    container_name: web_app
     build: ./project
     # command: flask run -h 0.0.0.0
     command: gunicorn --bind 0.0.0.0:5000 app:app
@@ -10,6 +11,7 @@ services:
     ports:
       - 5000:5000
   nginx:
+    container_name: nginx_server
     build: ./nginx
     ports:
       - 1337:80
