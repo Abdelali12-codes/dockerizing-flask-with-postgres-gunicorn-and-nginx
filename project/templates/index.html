@@ -5,7 +5,7 @@
     <title>My Awesome Website</title>
 
     <!-- attach our stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -14,7 +14,8 @@
 
         <!-- our main logo -->
         <a id="logo" href="index.html">
-            <img src="img/avatar.jpeg" alt="Logo">
+            <!-- <img src="img/avatar.jpeg" alt="Logo"> -->
+            <img src="{{ url_for('static', filename='img/avatar.jpeg') }}" alt="logo"/>
             <span>My Website</span>
         </a>
 
@@ -54,19 +55,19 @@
             </div>
 
             <div class="feature-box">
-                <img src="img/like.png" alt="Easy to Use">
+                <img src="{{ url_for('static', filename='img/like.png') }}" alt="Easy to Use">
                 <h5>Easy to Use</h5>
                 <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
             </div>
 
             <div class="feature-box">
-                <img src="img/faces.png" alt="Fun to Use">
+                <img src="{{ url_for('static', filename='img/faces.png') }}" alt="Fun to Use">
                 <h5>Fun to Use</h5>
                 <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
             </div>
 
             <div class="feature-box">
-                <img src="img/heart.png" alt="Fun to Use">
+                <img src="{{ url_for('static', filename='img/heart.png') }}" alt="Fun to Use">
                 <h5>You'll Love It</h5>
                 <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
             </div>
@@ -87,7 +88,7 @@
                     Their service is by far the most influential I've ever seen.
                 </div>
                 <div class="testimonial-author">
-                    <img src="img/david.jpg" alt="David East">
+                    <img src="{{ url_for('static', filename='img/david.jpg') }}" alt="David East">
                     <h5>David East</h5>
                     <span>King of Firebase</span>
                 </div>
@@ -98,7 +99,7 @@
                     Their service is by far the most influential I've ever seen.
                 </div>
                 <div class="testimonial-author">
-                    <img src="img/holly.jpg" alt="Holly Lloyd">
+                    <img src="{{ url_for('static', filename='img/holly.jpg') }}" alt="Holly Lloyd">
                     <h5>Holly Lloyd</h5>
                     <span>Queen of Scotch</span>
                 </div>
@@ -109,7 +110,7 @@
                     Their service is by far the most influential I've ever seen.
                 </div>
                 <div class="testimonial-author">
-                    <img src="img/brad.jpg" alt="Brad Green">
+                    <img src="{{ url_for('static', filename='img/brad.jpg') }}" alt="Brad Green">
                     <h5>Brad Green</h5>
                     <span>King of Angular</span>
                 </div>
@@ -122,7 +123,7 @@
 
     <!-- the footer -->
     <footer>
-        <img src="img/avatar.jpeg" alt="Footer Logo">
+        <img src="{{ url_for('static', filename='img/avatar.jpeg') }}" alt="Footer Logo">
         <span>My Website<br>Copyright &copy; 2016-3010 </span>
     </footer>
 
