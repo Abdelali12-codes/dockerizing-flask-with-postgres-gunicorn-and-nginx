@@ -11,13 +11,14 @@ services:
     ports:
       - 5000:5000
   db:
+    container_name: postgres
     image: postgres:13-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=hello_flask
-      - POSTGRES_PASSWORD=hello_flask
-      - POSTGRES_DB=hello_flask_dev
+      - POSTGRES_USER=abdelali
+      - POSTGRES_PASSWORD=abdelali
+      - POSTGRES_DB=abdelalidb
   nginx:
     container_name: nginx_server
     build: ./nginx
