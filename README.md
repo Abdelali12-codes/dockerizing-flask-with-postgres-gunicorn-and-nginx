@@ -9,13 +9,13 @@
 ## to use pgAdmin with postgresql follow the steps below:
 
 1. pull the pgadmin image (docker pull dpage/pgadmin4 )
-2. inspect the postgres container where your database is reside (docker inspect dev-postgres -f "{{json .NetworkSettings.Networks }}")
+2. inspect the postgres container where your database is reside (docker inspect postgres -f "{{json .NetworkSettings.Networks }}")
 3. take the ipadress of your postgres database container that is appear in the response of the above command
 4. run the pgadmin container via this command:
    docker run \
-   -p 80:80 \
-    -e 'PGADMIN_DEFAULT_EMAIL=abdelali@gmail.com' \
-    -e 'PGADMIN_DEFAULT_PASSWORD=abdelali' \
+   -p 8080:80 \
+    -e PGADMIN_DEFAULT_EMAIL=abdelali@gmail.com \
+    -e PGADMIN_DEFAULT_PASSWORD=abdelali \
     --name dev-pgadmin \
    -d dpage/pgadmin4
 5. go to the browser and tap http://localhost

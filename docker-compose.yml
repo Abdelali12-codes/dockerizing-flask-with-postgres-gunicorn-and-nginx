@@ -8,11 +8,15 @@ services:
     command: gunicorn --bind 0.0.0.0:5000 app:app
     volumes:
       - ./project:/usr/src/app/
+    networks:
+      - my-network
     ports:
       - 5000:5000
   db:
     container_name: postgres
     image: postgres:13-alpine
+    networks:
+      - my-network
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -22,9 +26,17 @@ services:
   nginx:
     container_name: nginx_server
     build: ./nginx
+    networks:
+      - my-network
     ports:
       - 80:80
     depends_on:
       - web
 volumes:
   postgres_data:
+networks:
+  default:
+    external: true
+    name: my-network
+# create the network
+# docker network create -d bridge my-network
