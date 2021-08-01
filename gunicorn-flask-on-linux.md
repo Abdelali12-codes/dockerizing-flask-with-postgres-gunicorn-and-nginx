@@ -1,23 +1,6 @@
-## create service
-
-[Unit]
-Description=gunicorn demo service
-After=network.target
-StartLimitIntervalSec=0
-Requires=gunicorn.socket
-
-[Service]
-
-- User=abdelali
-- Group=abdelali
-- WorkingDirectory=/home/abdelali/flask-gunicorn/
-- #ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn --workers 3 --bind unix:/home/\* abdelali/flask-gunicorn/flask-gunicorn.sock app:app
-- ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn app
-  [Install]
-
-WantedBy=multi-user.target
-
 ## create unix socket
+
+# /etc/systemd/system/gunicorn/socket
 
 [Unit]
 
@@ -38,6 +21,36 @@ WantedBy=multi-user.target
 
 - WantedBy=sockets.target
 
+# run the follow command
+
+- systemctl enable --now gunicorn.socket
+- sudo -u nginx curl --unix-socket /run/gunicorn.sock http
+
+## create service
+
+# sudo nano /etc/sustemd/system/gunicorn.service
+
+[Unit]
+Description=gunicorn demo service
+After=network.target
+StartLimitIntervalSec=0
+Requires=gunicorn.socket
+
+[Service]
+
+- User=abdelali
+- Group=abdelali
+- WorkingDirectory=/home/abdelali/flask-gunicorn/
+- #ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn --workers 3 --bind unix:/home/\* abdelali/flask-gunicorn/flask-gunicorn.sock app:app
+- ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn app
+  [Install]
+
+WantedBy=multi-user.target
+
+## run thr following command:
+
+- systemctl enable nginx.service
+
 ## configure nginx
 
 server {
@@ -47,3 +60,7 @@ location / {
 proxy_pass http://unix:/run/gunicorn.sock;
 }
 }
+
+# run the following command
+
+- systemctl start nginx
