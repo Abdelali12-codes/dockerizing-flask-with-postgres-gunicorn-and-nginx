@@ -17,12 +17,15 @@ services:
     image: postgres:13-alpine
     networks:
       - my-network
+    ports:
+      - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=abdelali
       - POSTGRES_PASSWORD=abdelali
       - POSTGRES_DB=abdelalidb
+
   nginx:
     container_name: nginx_server
     build: ./nginx
@@ -35,8 +38,9 @@ services:
 volumes:
   postgres_data:
 networks:
-  default:
-    external: true
-    name: my-network
+  my-network
+  # default:
+  #   external: true
+  #   name: my-network
 # create the network
 # docker network create -d bridge my-network
