@@ -33,16 +33,14 @@
 [Unit]
 Description=gunicorn demo service
 After=network.target
-StartLimitIntervalSec=0
 Requires=gunicorn.socket
 
 [Service]
 
 - User=abdelali
 - Group=abdelali
-- WorkingDirectory=/home/abdelali/flask-gunicorn/
-- #ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn --workers 3 --bind unix:/home/\* abdelali/flask-gunicorn/flask-gunicorn.sock app:app
-- ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn app
+- WorkingDirectory=/home/abdelali/flask-gunicorn/ (this directory where your app is reside)
+- ExecStart=/home/abdelali/flask-gunicorn/env/bin/gunicorn app:app
   [Install]
 
 WantedBy=multi-user.target
